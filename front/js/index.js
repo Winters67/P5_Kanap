@@ -1,33 +1,31 @@
-// insertion de la desciption de tout les produits
-selectItems = document.querySelector("#items");
-
-function productHtml(canap) {
-  return `
-   <a href="product.html?${canap._id} ">
-   <article>
-   <img src="${canap.imageUrl}" alt= "image du canapé ${canap.altTxt} "/>
-   <h3 class="productName">${canap.name}</h3>
-   <p class="productDescription">${canap.description}</p>
-   </article>
-   </a>`;
+// Récupération de la liste des produits et de leurs détails, depuis l'API.
+async function getItems() {
+    try {
+        const res = await fetch("http://localhost:3000/api/products");
+        const items = await res.json();
+        return items;
+    }
+    catch (error) {
+        console.log("Erreur: " + error);
+    };
 }
 
-/****
- * Récupération de tout les produits depuis l'api
- * voir fichier config.js
- *
- ****/
+// Modification du DOM pour faire apparaitre les produits.
+function showItem(item) {
+    document.querySelector("#items").innerHTML += `
+        <a href="./product.html?id=${item._id}">
+            <article>
+                <img src="${item.imageUrl}" alt="${item.altTxt}">
+                <h3 class="productName">${item.name}</h3>
+                <p class="productDescription">${item.description}</p>
+            </article>
+        </a>`;
+}
 
-(function main() {
-  fetch(config.api.baseUrl + config.api.getAllProduct)
-    .then((reponse) => reponse.json())
-    .then((promise) => {
-      promise.forEach((canap) => {
-        selectItems.innerHTML += productHtml(canap);
-        console.log(canap);
-      });
-    })
-    .catch((err) =>
-      console.error(`Erreur récupération . Message d'erreur => : ${err}`)
-    );
-})();
+// Rendu dynamique de la liste des produits.
+(async function renderProducts() {
+    const items = await getItems();
+    items.forEach(item => {
+        showItem(item)
+    });
+})()
