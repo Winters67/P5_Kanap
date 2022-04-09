@@ -4,5 +4,7 @@
     const orderId = url.searchParams.get("id");
     document.querySelector("#orderId").innerHTML = `
         ${orderId}<br>
-        Merci pour vos achats!`;
+        <br>
+        Merci pour vos achats. 
+        A bientôt sur notre site !  `;
 })();
