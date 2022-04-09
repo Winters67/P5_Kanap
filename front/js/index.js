@@ -29,7 +29,8 @@ function showItem(item) {
 }
 
 /************************************************************
- ***** Boucle affichage des produits de la page accueil ******
+  Boucle qui permet l'affichage des produits de la page 
+  accueil 
  ************************************************************/
 
 (async function renderProducts() {
