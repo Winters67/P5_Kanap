@@ -131,6 +131,8 @@ function productRemoval() {
   const removeButtons = document.querySelectorAll(".deleteItem");
   removeButtons.forEach((removeButton) => {
     removeButton.addEventListener("click", (event) => {
+      Swal.fire("Le produit à été supprimé de votre panier");
+
       const productId = event.target.closest("article").dataset.id;
       const productColor = event.target.closest("article").dataset.color;
       const newCart = storageStatus.filter(
@@ -202,7 +204,8 @@ function formValidation() {
       errorMsg.innerText = "";
       return true;
     } else {
-      errorMsg.innerText = "Veuillez renseigner un email.";
+      errorMsg.innerText =
+        "Veuillez respecter le format du courriel (exemple@domaine.fr).";
     }
   };
   if (
@@ -261,7 +264,7 @@ function formValidation() {
           console.log("Erreur: " + error);
         });
     } else {
-      alert("Veuillez verifier vos informations.");
+      Swal.fire("le Formulaire comporte des erreurs de saisie");
     }
   });
 })();
