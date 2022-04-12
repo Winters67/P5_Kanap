@@ -64,15 +64,16 @@ async function productInfos() {
     let storagePush = () => {
       //   comparaison de la couleur
       if (productColor === "") {
+        // alert
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Veuillez  choisir un coloris !",
         });
 
-        // alert("Veuillez sélectionner une couleur");
         //  comparaison de la quantitée
       } else if (productQuantity < 1 || productQuantity > 100) {
+      //  alert
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -82,12 +83,12 @@ async function productInfos() {
         //   pousse dans le localstorage objet productDetails
         storageStatus.push(productDetails);
         localStorage.setItem("product", JSON.stringify(storageStatus));
+        // alert
         Swal.fire(
           "Merci!",
           "Votre sélection à été ajoutée au panier",
           "success"
         );
-        // alert("Votre sélection à été ajoutée au panier");
       }
     };
     if (storageStatus) {
