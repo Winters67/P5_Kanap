@@ -9,8 +9,8 @@
 const config = {
   api: {
     baseUrl: "http://localhost:3000/api/products",
-    getAllProduct: "/",
-    getOneProduct: "/",
-    newsOrder: "/order",
+    getAllProducts: "/",
+    getOneProduct: "/:id",
+    orderProducts: "/order",
   },
 };
