@@ -1,4 +1,10 @@
 /*************************************************************
+    Récupération des information du fichier config.js
+ ************************************************************/
+
+config.enabled;
+
+/*************************************************************
     Récupération de la commande depuis le localStorage.
  ************************************************************/
 
@@ -39,7 +45,7 @@ async function cartDisplay() {
   let totalQty = 0;
   let cartContent = "";
   for (product of storageStatus) {
-    await fetch(`http://localhost:3000/api/products/${product.id}`)
+    await fetch(config.api.baseUrl + `/${product.id}`)
       .then((res) => res.json())
       .then((item) => {
         totalPrice += parseInt(item.price) * parseInt(product.quantity);
@@ -247,7 +253,7 @@ function formValidation() {
         contact,
         products,
       };
-      await fetch("http://localhost:3000/api/products/order", {
+      await fetch(config.api.baseUrl + config.api.orderProducts, {
         method: "POST",
         headers: {
           Accept: "application/json",

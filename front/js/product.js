@@ -73,7 +73,7 @@ async function productInfos() {
 
         //  comparaison de la quantitée
       } else if (productQuantity < 1 || productQuantity > 100) {
-      //  alert
+        //  alert
         Swal.fire({
           icon: "error",
           title: "Oops...",
