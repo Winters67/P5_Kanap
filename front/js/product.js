@@ -50,21 +50,26 @@ async function productInfos() {
 
 (function productStorage() {
   const sendButton = document.querySelector("#addToCart");
+  // Ecoute l'évennement du bouton (click)
   sendButton.addEventListener("click", () => {
     const productId = productCheck();
     const productColor = document.querySelector("#colors").value;
     const productQuantity = document.querySelector("#quantity").value;
+    console.log(productId);
     // Création d'un objet pour le locale Storage
     let productDetails = {
       id: productId,
       color: productColor,
       quantity: productQuantity,
     };
+    console.log(productDetails);
+
     let storageStatus = JSON.parse(localStorage.getItem("product"));
     let storagePush = () => {
+      console.log(storageStatus);
       //   comparaison de la couleur
       if (productColor === "") {
-        // alert
+        // Popup d'alert
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -73,17 +78,22 @@ async function productInfos() {
 
         //  comparaison de la quantitée
       } else if (productQuantity < 1 || productQuantity > 100) {
-        //  alert
+        //   Popup d'alert
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Veuillez  choisir une quantité !",
         });
       } else {
-        //   pousse dans le localstorage objet productDetails
+        // pousse dans le localstorage objet ==> let productDetails
+        /* = {
+          id: productId,
+          color: productColor,
+          quantity: productQuantity,*/
+
         storageStatus.push(productDetails);
         localStorage.setItem("product", JSON.stringify(storageStatus));
-        // alert
+        //  Popup d'alert
         Swal.fire(
           "Merci!",
           "Votre sélection à été ajoutée au panier",
@@ -91,6 +101,7 @@ async function productInfos() {
         );
       }
     };
+    // compare dans le localStorage id + color + quantity
     if (storageStatus) {
       storageStatus.forEach((product, index) => {
         if (
@@ -98,9 +109,12 @@ async function productInfos() {
           productDetails.color === product.color
         ) {
           productDetails.quantity =
+            //prend le nombre de quantité saisie et ajoute dans le localstorage
             parseInt(productDetails.quantity) + parseInt(product.quantity);
           storageStatus.splice(index, 1);
         }
+        console.log(productDetails.quantity);
+        console.log(productQuantity);
       });
       storagePush();
     } else {
