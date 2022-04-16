@@ -1,7 +1,10 @@
 /**Paramètre des api
  * "getAllProduct" : "/", ==> Retourne un tableau de tous les éléments
-    "getProduct" : "/", ==> Renvoie l'élément correspondant à {product-id}, identifiant d'un produit
-    "newsOrder" : "/order", ==> retourne l'objet contact
+    
+"getProduct" : "/", ==> Renvoie l'élément correspondant à {product-id},
+                        identifiant d'un produit
+    
+     "newsOrder" : "/order", ==> retourne l'objet contact
  * 
  * 
  */

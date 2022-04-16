@@ -37,5 +37,6 @@ function showItem(item) {
   items = await getItems();
   items.forEach((item) => {
     showItem(item);
+    console.log(item);
   });
 })();
