@@ -159,7 +159,7 @@ function formValidation() {
     const firstName = document.querySelector("#firstName");
     const errorMsg = document.querySelector("#firstNameErrorMsg");
     if (
-      /^([A-Za-zÀ-ú]{2,20})?([-])?([A-Za-zÀ-ú]{2,20})$/.test(firstName.value)
+      /^([A-Za-zÀ-ú\s]{2,20})?([-])?([A-Za-zÀ-ú\s]{2,20})$/.test(firstName.value)
     ) {
       errorMsg.innerText = "";
       return true;
@@ -171,7 +171,7 @@ function formValidation() {
     const lastName = document.querySelector("#lastName");
     const errorMsg = document.querySelector("#lastNameErrorMsg");
     if (
-      /^([A-Za-zÀ-ú]{2,20})?([-])?([A-Za-zÀ-ú]{2,20})$/.test(lastName.value)
+      /^([A-Za-zÀ-ú\s]{2,20})?([-])?([A-Za-zÀ-ú\s]{2,20})$/.test(lastName.value)
     ) {
       errorMsg.innerText = "";
       return true;
@@ -193,7 +193,7 @@ function formValidation() {
     const city = document.querySelector("#city");
     const errorMsg = document.querySelector("#cityErrorMsg");
     if (
-      /^([A-Za-zÀ-ú']{2,20})?([-])?([A-Za-zÀ-ú']{2,20})?([-])?([A-Za-zÀ-ú']{2,20})$/.test(
+      /^([A-Za-zÀ-ú'\s]{2,20})?([-])?([A-Za-zÀ-ú'\s]{2,20})?([-])?([A-Za-zÀ-ú'\s]{2,20})$/.test(
         city.value
       )
     ) {
@@ -253,6 +253,7 @@ function formValidation() {
         contact,
         products,
       };
+
       await fetch(config.api.baseUrl + config.api.orderProducts, {
         method: "POST",
         headers: {

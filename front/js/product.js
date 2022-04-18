@@ -109,7 +109,7 @@ async function productInfos() {
           productDetails.color === product.color
         ) {
           productDetails.quantity =
-            //prend le nombre de quantité saisie et ajoute dans le localstorage
+            //prends le nombre de quantité saisie et ajoute dans le localstorage
             parseInt(productDetails.quantity) + parseInt(product.quantity);
           storageStatus.splice(index, 1);
         }

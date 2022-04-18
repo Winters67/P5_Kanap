@@ -11,4 +11,6 @@
         <br>
         Merci pour vos achats. 
         A bientôt sur notre site !  `;
+        console.log(orderId)
+        console.log(url)
 })();
