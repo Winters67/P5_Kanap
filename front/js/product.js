@@ -52,7 +52,7 @@ async function productInfos() {
   const sendButton = document.querySelector("#addToCart");
   // Ecoute l'évennement du bouton (click)
   sendButton.addEventListener("click", () => {
-    const productId = productCheck();
+    const productId = newFunction();
     const productColor = document.querySelector("#colors").value;
     const productQuantity = document.querySelector("#quantity").value;
     console.log(productId);
@@ -100,6 +100,7 @@ async function productInfos() {
           "success"
         );
       }
+      console.log(storageStatus);
     };
     // compare dans le localStorage id + color + quantity
     if (storageStatus) {
@@ -109,8 +110,9 @@ async function productInfos() {
           productDetails.color === product.color
         ) {
           productDetails.quantity =
-            //prends le nombre de quantité saisie et ajoute dans le localstorage
+            // récupère la valeur de productDetails.quantity + product.quantity
             parseInt(productDetails.quantity) + parseInt(product.quantity);
+          // ajoute la quantité saisie  au  localStorage
           storageStatus.splice(index, 1);
         }
         console.log(productDetails.quantity);
@@ -123,3 +125,6 @@ async function productInfos() {
     }
   });
 })();
+function newFunction() {
+  return productCheck();
+}

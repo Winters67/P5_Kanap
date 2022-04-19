@@ -14,7 +14,7 @@ function getCart() {
 
 /*************************************************************
              Vérification du contenu du panier.
-             Affichage d'un message si panier est
+             Affichage d'un message si panier est vide 
  ************************************************************/
 
 function cartCheck() {
@@ -159,7 +159,9 @@ function formValidation() {
     const firstName = document.querySelector("#firstName");
     const errorMsg = document.querySelector("#firstNameErrorMsg");
     if (
-      /^([A-Za-zÀ-ú\s]{2,20})?([-])?([A-Za-zÀ-ú\s]{2,20})$/.test(firstName.value)
+      /^([A-Za-zÀ-ú\s]{2,20})?([-])?([A-Za-zÀ-ú\s]{2,20})$/.test(
+        firstName.value
+      )
     ) {
       errorMsg.innerText = "";
       return true;
