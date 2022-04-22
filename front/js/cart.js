@@ -112,7 +112,11 @@ function productQuantity() {
   quantitySelectors.forEach((quantityInput) => {
     quantityInput.addEventListener("change", (event) => {
       if (event.target.value < 1 || event.target.value > 100) {
-        alert("Veuillez choisir entre 1 et 100 articles");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Veuillez  choisir une quantité !",
+        });
       } else {
         const newQty = event.target.value;
         const productId = event.target.closest("article").dataset.id;
