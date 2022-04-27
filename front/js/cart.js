@@ -212,7 +212,7 @@ function formValidation() {
   const emailCheck = () => {
     const email = document.querySelector("#email");
     const errorMsg = document.querySelector("#emailErrorMsg");
-    if (/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/.test(email.value)) {
+    if (/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.([a-zA-Z0-9]{2,4})+$/.test(email.value)) {
       errorMsg.innerText = "";
       return true;
     } else {
